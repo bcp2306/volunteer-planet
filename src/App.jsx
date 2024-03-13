@@ -2,7 +2,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import View from './pages/View'
-import Map from './pages/Map'
+import MapPage from './pages/MapPage'
 import Add from './pages/Add'
 import { Link } from 'react-router-dom'
 import volunteerPlanet from './assets/volunteerPlanet.png'
@@ -24,7 +24,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />}/>
       <Route path="/view" element={<View/>}/>
-      <Route path="/map" element={<Map />}/>
+      <Route path="/map" element={<MapPage />}/>
       <Route path="/add" element={<Add />}/>
      </Routes>
     </>
