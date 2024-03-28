@@ -40,3 +40,68 @@
 .read-the-docs {
   color: #888;
 }
+
+
+
+
+
+
+
+
+
+/*VIEW PAGE*/
+
+/* Base styling */
+* {
+  box-sizing: border-box;
+}
+
+/* Styling for the search input */
+input[type="text"] {
+  width: calc(100% - 20px); /* Adjust width to account for padding */
+  padding: 10px;
+  margin: 20px 0; /* Add margin on top for spacing */
+  font-size: 16px;
+  border: 2px solid #ff006a; /* Pink border */
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #d20355; /* Darker pink when focused */
+  box-shadow: 0 0 8px rgba(210, 3, 85, 0.5);
+}
+
+/* Adjustments for the job sections container */
+.view-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr)); /* Adjusted for dynamic column width */
+  gap: 20px; /* Adjusted gap to match search bar padding */
+  padding: 0 10px; /* Match search bar's lateral padding */
+}
+
+/* Styling for each job section */
+section {
+  background-color: #ff006a; 
+  color: #ffffff; /* White text */
+  padding: 20px; /* Increased padding for content */
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column; /* Vertical content alignment */
+  justify-content: start; /* Align content to the top */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+section:hover {
+  transform: scale(1.05); /* Slight increase in size */
+  box-shadow: 0 0 15px rgba(255, 0, 106, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .view-container {
+    grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr)); /* Adjust for single column layout */
+  }
+}
