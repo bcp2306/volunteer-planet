@@ -5,6 +5,7 @@
     border-radius: 35px;
     padding: 0px 10px 10px 10px;
     transition: box-shadow 0.3s ease;
+    justify-content: center;
     }
 
 .wrapper:hover {

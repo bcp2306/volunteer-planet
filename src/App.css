@@ -62,14 +62,14 @@ input[type="text"] {
   padding: 10px;
   margin: 20px 0; /* Add margin on top for spacing */
   font-size: 16px;
-  border: 2px solid #ff006a; /* Pink border */
+  border: 2px solid #4dffa6; /* Pink border */
   border-radius: 20px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus {
-  border-color: #d20355; /* Darker pink when focused */
+  border-color: #4dffa6; /* Darker pink when focused */
   box-shadow: 0 0 8px rgba(210, 3, 85, 0.5);
 }
 
@@ -83,7 +83,7 @@ input[type="text"]:focus {
 
 /* Styling for each job section */
 section {
-  background-color: #ff006a; 
+  background-color: #4dffa6; 
   color: #ffffff; /* White text */
   padding: 20px; /* Increased padding for content */
   border-radius: 30px;
@@ -92,11 +92,12 @@ section {
   flex-direction: column; /* Vertical content alignment */
   justify-content: start; /* Align content to the top */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin-bottom: 2em;
 }
 
 section:hover {
   transform: scale(1.05); /* Slight increase in size */
-  box-shadow: 0 0 15px rgba(255, 0, 106, 0.5);
+  box-shadow: 0 0 15px rgba(0, 255, 34, 0.5);
 }
 
 /* Responsive adjustments */
@@ -105,3 +106,87 @@ section:hover {
     grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr)); /* Adjust for single column layout */
   }
 }
+
+/* NAVBAR, FOOTER AND HOMEPAGE*/
+
+.navbar{
+  background: #4dffa6; font-family: calibri; padding-right: 15px;padding-left: 15px;
+  border-radius: 25px;
+}
+
+.navdiv{
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo a{
+  font-size: 35px; font-weight: 600; color: white;
+}
+.logo{
+  width: 200px;
+  height: auto;
+}
+li{
+  list-style: none; display: inline-block;
+}
+li a{
+  color: white; font-size: 18px; font-weight: bold; margin-right: 25px;
+  color: black;
+}
+button{
+  background-color: black; margin-left: 10px; border-radius: 10px; padding: 10px; width: 90px;
+  margin-bottom: 1em;
+}
+button a{
+  color: white; font-weight: bold; font-size: 15px;
+  
+}
+
+p {
+  color: black;
+}
+
+h1 {
+  color: black;
+}
+h4 {
+  color: black;
+}
+
+h2 {
+  color: black;
+}
+
+.viewButton {
+  justify-content: center;
+}
+.tColor {
+  
+  color: white;
+}
+
+.nav-button {
+  background-color: black;
+}
+
+.footer {
+  background-color:   white;
+  border-radius: 25px;
+  border: 4px solid  black;
+  margin-top: 1em;
+}
+
+.hPage {
+  background-color:   white;
+  border-radius: 25px;
+  border: 4px solid  #4dffa6;
+  margin-top: 1em;
+}
+
+.hColor {
+  color: black;
+}
+
+.fColor {
+  color: black;
+}
+
+

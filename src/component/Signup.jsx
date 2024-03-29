@@ -6,7 +6,7 @@ const Signup = () => {
     return (
         <div className='wrapper'>
             <form action="">
-                <h1>Sign Up</h1>
+                <h1 className='tColor'>Sign Up</h1>
                 <div className="input-box">
                     <input type="text" placeholder='Username' required />  
                     <FaUser className='icon' />                

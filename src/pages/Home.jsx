@@ -1,9 +1,9 @@
 function Home() {
     return (
-        <>
-            <h1>Home</h1>
-            <p>(home page)</p>
-        </>
+        <div className="hPage">
+            <h1 className="hColor">Home</h1>
+            <p className="hColor">(home page)</p>
+        </div>
     )
 }
  
