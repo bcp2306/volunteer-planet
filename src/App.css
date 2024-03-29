@@ -189,4 +189,9 @@ h2 {
   color: black;
 }
 
+.all {
+  background-color: grey;
+  padding: 40px;
+  border-radius: 25px;
+}
 

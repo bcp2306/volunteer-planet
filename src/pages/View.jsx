@@ -35,7 +35,7 @@ function View() {
 
     return (
         <>
-            <h1>View Volunteering Jobs</h1>
+            <h1 className='tColor'>View Volunteering Jobs</h1>
                 <input 
                 type="text"
                 placeholder="Search Jobs..."

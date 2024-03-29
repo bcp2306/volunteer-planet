@@ -13,7 +13,7 @@ import Footer from './component/Footer.jsx'
 function App() {
  
   return (
-    <>
+    <div className='all'>
     <nav className='navbar'>
       <div className='navdiv'> 
       <div className='logo'><img src={volunteerPlanet} className="logo" alt="logo" /></div>
@@ -39,8 +39,7 @@ function App() {
       <Route path="/Login" element={<Login />}/>
      </Routes>
      <Footer />
-    </>
-
+    </div>
   )
 
 }
