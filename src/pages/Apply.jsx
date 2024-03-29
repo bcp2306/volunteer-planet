@@ -1,34 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Apply.css'; 
 
 function Apply() {
+   
     const [application, setApplication] = useState({
-        applicationType: 'individual', 
+        applicationType: 'individual',
         fullName: '',
         email: '',
         dob: '',
         coverLetter: '',
+        jobTitle: '', 
         groupMembers: [{ fullName: '', dob: '' }],
     });
+    const [jobs, setJobs] = useState([]);
     const [isSubmitted, setIsSubmitted] = useState(false); 
 
+    
+    useEffect(() => {
+        fetch("https://w20042922.nuwebspace.co.uk/team-project/backend/jobs")
+            .then(response => response.json())
+            .then(json => setJobs(json))
+            .catch(err => console.log(err));
+    }, []);
+
+   
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setApplication({...application, [name]: value});
+        setApplication({ ...application, [name]: value });
     };
 
+    
     const handleGroupMemberChange = (index, e) => {
         const { name, value } = e.target;
-        const updatedGroupMembers = application.groupMembers.map((member, idx) => {
-            if (idx === index) {
-                return { ...member, [name]: value };
-            }
-            return member;
-        });
-
-        setApplication({...application, groupMembers: updatedGroupMembers});
+        const updatedGroupMembers = application.groupMembers.map((member, idx) => 
+            idx === index ? { ...member, [name]: value } : member
+        );
+        setApplication({ ...application, groupMembers: updatedGroupMembers });
     };
 
+    
     const addGroupMember = () => {
         setApplication({
             ...application,
@@ -36,10 +46,11 @@ function Apply() {
         });
     };
 
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(application); 
-        setIsSubmitted(true);
+        setIsSubmitted(true); 
     };
 
     return (
@@ -54,6 +65,18 @@ function Apply() {
                     </select>
                 </div>
 
+            
+                <div>
+                    <label>Job Title:</label>
+                    <select name="jobTitle" value={application.jobTitle} onChange={handleInputChange}>
+                        <option value="">Select a job</option>
+                        {jobs.map((job, index) => (
+                            <option key={index} value={job.title}>{job.title}</option>
+                        ))}
+                    </select>
+                </div>
+
+               
                 {application.applicationType === 'group' && application.groupMembers.map((member, index) => (
                     <div key={index}>
                         <h3>Group Member {index + 1}</h3>
@@ -67,6 +90,7 @@ function Apply() {
                     <button type="button" onClick={addGroupMember}>Add Another Member</button>
                 )}
 
+                
                 <div>
                     <label>Full Name:</label>
                     <input type="text" name="fullName" value={application.fullName} onChange={handleInputChange} />
@@ -83,9 +107,9 @@ function Apply() {
                     <label>Cover Letter / Message:</label>
                     <textarea name="coverLetter" value={application.coverLetter} onChange={handleInputChange} />
                 </div>
+
                 <button type="submit">Submit Application</button>
                 {isSubmitted && <div className="submission-confirmation">Application sent</div>}
-
             </form>
         </>
     );

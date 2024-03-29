@@ -5,6 +5,7 @@ import Signup from './component/Signup.jsx'
 import Home from './pages/Home'
 import View from './pages/View'
 import Add from './pages/Add'
+import Apply from './pages/Apply'
 import { Link } from 'react-router-dom'
 import volunteerPlanet from './assets/volunteer-planet-green.png'
 import Footer from './component/Footer.jsx'
@@ -35,6 +36,7 @@ function App() {
       <Route path="/" element={<Home />}/>
       <Route path="/view" element={<View/>}/>  
       <Route path="/add" element={<Add />}/>
+      <Route path="/apply" element={<Apply />}/>
       <Route path="/Signup" element={<Signup />}/>
       <Route path="/Login" element={<Login />}/>
      </Routes>
