@@ -29,7 +29,12 @@ try
         case '/jobs' :
         case '/jobs/' :
             $endpoint = new Jobs();
-            break;  
+            break;
+            // handling of the POST request for adding new volunteer opportunities
+        case '/addOpportunity':
+        case '/addOpportunity/':
+            include 'AddNewOpportunity.php';
+            return;
         default:
             throw new ClientError(404);
     }
@@ -38,6 +43,7 @@ try
     $data['message'] = $e->getMessage();
     $endpoint = new Endpoint($data);
 }
+
 
 $data = $endpoint->getData();
 
