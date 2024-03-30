@@ -1,5 +1,16 @@
 <?php
 
+// CORS headers
+header('Access-Control-Allow-Origin: http://localhost:5173'); // Allow your React app's origin
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS'); // Allowed request methods
+header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Allowed request headers
+
+// Handle preflight requests for CORS
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    // Exit early so the OPTIONS request is just a handshake
+    exit();
+}
+
 require_once 'Database.php';
 require_once 'ClientError.php';
 require_once 'Request.php';
@@ -11,7 +22,7 @@ class AddNewOpportunity
 
     public function __construct()
     {
-        $this->dbConn = new Database("db/jobs.sqlite");
+        $this->dbConn = new Database("../db/jobs.sqlite");
         $this->processRequest();
     }
 
