@@ -1,14 +1,17 @@
 <?php
 
-// CORS headers
-header('Access-Control-Allow-Origin: http://localhost:5173'); // Allow your React app's origin
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS'); // Allowed request methods
-header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Allowed request headers
+// Allow any domain to access
+header('Access-Control-Allow-Origin: *');
 
-// Handle preflight requests for CORS
+// Allow specific HTTP methods
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+
+// Allow specific headers
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
+// Handle preflight requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    // Exit early so the OPTIONS request is just a handshake
-    exit();
+    exit(0);
 }
 
 require_once 'Database.php';
