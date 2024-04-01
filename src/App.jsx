@@ -5,6 +5,7 @@ import Signup from './component/Signup.jsx'
 import Home from './pages/Home'
 import View from './pages/View'
 import Add from './pages/Add'
+import References from './pages/References.jsx'
 import Apply from './pages/Apply'
 import { Link } from 'react-router-dom'
 import volunteerPlanet from './assets/volunteer-planet-green.png'
@@ -22,8 +23,9 @@ function App() {
             <div className='li'>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/view">View Volunteering Opportunities</Link></li>
-            <li><Link to="/add">Add Volunteering Opportunity</Link></li>
+            <li><Link to="/add">Admin</Link></li>
             <li> <a href="https://www.w3schools.com">View map</a></li>
+            <li><Link to="/references">References</Link></li>
             </div>
         </ul>
           <div >
@@ -36,6 +38,7 @@ function App() {
       <Route path="/" element={<Home />}/>
       <Route path="/view" element={<View/>}/>  
       <Route path="/add" element={<Add />}/>
+      <Route path="/references" element={<References />}/>
       <Route path="/apply" element={<Apply />}/>
       <Route path="/Signup" element={<Signup />}/>
       <Route path="/Login" element={<Login />}/>

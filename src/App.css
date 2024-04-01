@@ -93,6 +93,7 @@ section {
   justify-content: start; /* Align content to the top */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   margin-bottom: 2em;
+  margin-top: 1em;
 }
 
 section:hover {
@@ -195,3 +196,14 @@ h2 {
   border-radius: 25px;
 }
 
+.hImg {
+  width: 300px;
+  height: auto;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  border-radius: 25px;
+}
+
+.hText {
+  color: black;
+}
