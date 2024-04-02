@@ -62,14 +62,14 @@ input[type="text"] {
   padding: 10px;
   margin: 20px 0; /* Add margin on top for spacing */
   font-size: 16px;
-  border: 2px solid #4dffa6; /* Pink border */
+  border: 2px solid #4dffa6; /* Green border */
   border-radius: 20px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus {
-  border-color: #4dffa6; /* Darker pink when focused */
+  border-color: #4dffa6; /* Green when focused */
   box-shadow: 0 0 8px rgba(210, 3, 85, 0.5);
 }
 
@@ -108,7 +108,7 @@ section:hover {
   }
 }
 
-/* NAVBAR, FOOTER AND HOMEPAGE*/
+/* NAVBAR UI */
 
 .navbar{
   background: #4dffa6; font-family: calibri; padding-right: 15px;padding-left: 15px;
@@ -133,7 +133,7 @@ li a{
   color: black;
 }
 button{
-  background-color: black; margin-left: 10px; border-radius: 10px; padding: 10px; width: 90px;
+  background-color: black; margin-left: 10px; border-radius: 10px; padding: 10px; width: 120px;
   margin-bottom: 1em;
 }
 button a{
@@ -167,6 +167,157 @@ h2 {
 .nav-button {
   background-color: black;
 }
+
+.nav-button:hover {
+  color:#646cffaa;
+}
+
+/* User UI */
+
+.User {
+  margin:0 auto;
+  padding:2rem;
+  box-sizing:border-box;
+  display:flex; 
+  flex-direction:column;
+  align-items:center;
+  min-height:auto;
+}
+
+.tab-form {
+  border-radius: 25px;
+  width:95%;
+  max-width:450px;
+  background:black;
+  box-shadow:0px 2px 5px 2px rgba(0,0,0,0.08);
+  border: 2px solid #4dffa6;
+  margin:auto;
+  align-self:stretch;
+  display:flex;
+  flex-direction:column;
+  padding:10px;
+  margin-top:1em;
+  height:525px;
+}
+
+.tab-form .tab-header {
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  cursor:pointer;
+}
+
+.tab-form .tab-header > div {
+  flex:1;
+  padding:15px;
+  text-align:center;
+  color:white;
+}
+
+.tab-form .tab-header > div.active {
+  border:2px solid #4dffa6;
+  color:black;
+  background:#4dffa6;
+}
+
+.tab-form .tab-body {
+  position:relative;
+  min-height:360px;
+  overflow:hidden;
+}
+
+.tab-form .tab-body > div {
+  position:relative;
+  width:100%;
+  opacity:0;
+  padding:5px 25px;
+  margin:0;
+  transition:opacity 300ms ease-in-out 0ms;
+}
+
+.tab-form .tab-body > div.active {
+  opacity:1;
+  margin-top:0px;
+}
+
+.tab-form .tab-body > div h2 {
+  font-size:30px;
+  color:White;
+  text-align:center;
+  margin-bottom:0px;
+  margin-top:0px;
+  cursor:default;
+}
+
+.input-box {
+  position:relative;
+}
+
+.input-box .icon-user {
+  position: absolute;
+  right: 10px; 
+  top: 65%; 
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+.input-box .icon-mail {
+  position: absolute;
+  right: 10px;
+  top: 68%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.input-box .icon-lock {
+  position: absolute;
+  right: 10px; 
+  top: 68%; 
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -10px 0 10px;
+  padding-top:5px;
+}
+
+.tab-form .tab-body > div .input-box {
+  margin:15px 0;
+}
+
+.tab-form .tab-body > div .input-box label {
+  display:block;
+  font-size:15px;
+  text-align:left;
+}
+
+.tab-form .tab-body > div .input-box input {
+  width:100%;
+  margin-top:5px;
+  margin-bottom:5px;
+  font-size:15px;
+  padding:10px;
+  border:none;
+  border-radius:15px;
+}
+
+.tab-form .tab-body > div .input-box button {
+  width:100%;
+  margin:auto;
+  padding:8px;
+  font-size:16px;
+  border:none;
+  outline:none;
+  background:#4dffa6;
+  color:black;
+  font-weight:600;
+  border-radius:5px;
+}
+
+/* Footer & Homepage UI */
 
 .footer {
   background-color:   white;

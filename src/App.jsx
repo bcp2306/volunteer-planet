@@ -1,15 +1,14 @@
-import './App.css'
-import { Routes, Route } from 'react-router-dom'
-import Login from './component/Login.jsx'
-import Signup from './component/Signup.jsx'
-import Home from './pages/Home'
-import View from './pages/View'
-import Add from './pages/Add'
-import References from './pages/References.jsx'
-import Apply from './pages/Apply'
-import { Link } from 'react-router-dom'
-import volunteerPlanet from './assets/volunteer-planet-green.png'
-import Footer from './component/Footer.jsx'
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import User from './pages/User';
+import Home from './pages/Home';
+import View from './pages/View';
+import Add from './pages/Add';
+import References from './pages/References.jsx';
+import Apply from './pages/Apply';
+import { Link } from 'react-router-dom';
+import volunteerPlanet from './assets/volunteer-planet-green.png';
+import Footer from './component/Footer.jsx';
 
 
 function App() {
@@ -29,8 +28,9 @@ function App() {
             </div>
         </ul>
           <div >
-            <button className='nav-button'><Link to="/Signup">Sign Up</Link></button>
-            <button className='nav-button'><Link to="/Login">Login</Link></button>
+            <Link to="/user">
+            <button className='nav-button'>SignUp/Login</button>
+            </Link>
           </div>
         </div>
     </nav>
@@ -40,8 +40,7 @@ function App() {
       <Route path="/add" element={<Add />}/>
       <Route path="/references" element={<References />}/>
       <Route path="/apply" element={<Apply />}/>
-      <Route path="/Signup" element={<Signup />}/>
-      <Route path="/Login" element={<Login />}/>
+      <Route path="/user" element={<User />} />
      </Routes>
      <Footer />
     </div>
