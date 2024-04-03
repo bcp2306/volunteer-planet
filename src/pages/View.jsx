@@ -31,7 +31,7 @@ function View() {
       <h4>Category:</h4>
       <p>{job.category}</p>
       <button className='viewButton'>
-      <Link to="/apply">Apply</Link>
+      <Link to="/apply" className='hColor'>Apply</Link>
         </button>
     </section>
   ));
