@@ -54,7 +54,7 @@ const Add = () => {
     return (
         <div className='add-container'>
             <h1 className='tColor'>Add Volunteer Opportunity</h1>
-            {/* Display success or error message */}
+            {}
             {message.content && (
                 <div className={`message ${message.type}`}>
                     {message.content}
