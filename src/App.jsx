@@ -3,12 +3,14 @@ import { Routes, Route } from 'react-router-dom';
 import User from './pages/User';
 import Home from './pages/Home';
 import View from './pages/View';
-import Add from './pages/Add';
+import MyOpportunities from './pages/MyOpportunities.jsx';
 import References from './pages/References.jsx';
 import Apply from './pages/Apply';
 import { Link } from 'react-router-dom';
 import volunteerPlanet from './assets/volunteer-planet-green.png';
 import Footer from './component/Footer.jsx';
+import AddOpportunity from './pages/AddOpportunity';
+
 
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
             <div className='li'>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/view">View Volunteering Opportunities</Link></li>
-            <li><Link to="/add">Admin</Link></li>
+            <li><Link to="/my-opportunities">My Opportunities</Link></li>
             <li> <a href="https://www.w3schools.com">View map</a></li>
             <li><Link to="/references">References</Link></li>
             </div>
@@ -37,10 +39,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />}/>
       <Route path="/view" element={<View/>}/>  
-      <Route path="/add" element={<Add />}/>
+      <Route path="/my-opportunities" element={<MyOpportunities />}/>
       <Route path="/references" element={<References />}/>
       <Route path="/apply" element={<Apply />}/>
       <Route path="/user" element={<User />} />
+      <Route path="/add-opportunity" element={<AddOpportunity />} />
      </Routes>
      <Footer />
     </div>
