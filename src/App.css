@@ -56,57 +56,145 @@
   box-sizing: border-box;
 }
 
-/* Styling for the search input */
-input[type="text"] {
-  width: calc(100% - 20px); /* Adjust width to account for padding */
+/* Styling for the search input and filter dropdowmn */
+input[type="text"], select.category-filter {
   padding: 10px;
-  margin: 20px 0; /* Add margin on top for spacing */
   font-size: 16px;
-  border: 2px solid #4dffa6; /* Green border */
+  border: 2px solid #4dffa6; /* border colour */
   border-radius: 20px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="text"]:focus {
-  border-color: #4dffa6; /* Green when focused */
-  box-shadow: 0 0 8px rgba(210, 3, 85, 0.5);
+input[type="text"] {
+  width: calc(50% - 20px); /* Adjusted width for side-by-side layout */
+  margin-right: 10px; /* Small space between the input and the dropdown */
+}
+
+input[type="text"]:focus, select.category-filter:focus {
+  border-color: #4dffa6; /* Consistent focus colour */
+  box-shadow: 0 0 9px #07f37d;
+}
+
+/* Adjustments for the search bar and filter dropdown box */
+.search-and-filter {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px; /* Space between search input and filter dropdown */
+  margin: 20px 0; /* Adjusted top margin for spacing */
+}
+
+/* Styling for the filter dropdown - Consistent colour theme */
+select.category-filter {
+  width: calc(50% - 20px); /* Adjusted width for side-by-side layout */
+  margin-left: 10px; /* small space between the input and the dropdown */
 }
 
 /* Adjustments for the job sections container */
 .view-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr)); /* Adjusted for dynamic column width */
-  gap: 20px; /* Adjusted gap to match search bar padding */
-  padding: 0 10px; /* Match search bar's lateral padding */
+  grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr));
+  gap: 20px;
+  padding: 0 10px;
 }
 
-/* Styling for each job section */
+/* Enhanced Styling for each job section */
 section {
-  background-color: #4dffa6; 
-  color: #ffffff; /* White text */
-  padding: 20px; /* Increased padding for content */
+  background: linear-gradient(145deg, #4dffa6, #03db6f);
+  color: #ffffff;
+  padding: 20px;
   border-radius: 30px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   display: flex;
-  flex-direction: column; /* Vertical content alignment */
-  justify-content: start; /* Align content to the top */
+  flex-direction: column;
+  justify-content: space-between;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  margin-bottom: 2em;
-  margin-top: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: #ffffff20;
+  transform: rotate(45deg);
+  pointer-events: none;
+  transition: transform 0.5s ease-in-out;
+}
+
+section:hover::before {
+  transform: rotate(0deg);
 }
 
 section:hover {
-  transform: scale(1.05); /* Slight increase in size */
-  box-shadow: 0 0 15px rgba(0, 255, 34, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 34, 0.5);
 }
+
+/* Enhanced text styling within job sections */
+h2 {
+  font-size: 22px; 
+  font-weight: bold; 
+  margin-bottom: 10px; 
+  
+}
+
+p {
+  font-size: 18px; 
+  margin-bottom: 15px; /* Increased spacing for better layout */
+  line-height: 1.6; 
+  color: #ffff; /* Lighter colour for body text */
+}
+
+h4 {
+  font-size: 20px; 
+  font-weight: bold;
+  color: #d4ffeb; 
+  margin-top: 15px; 
+  margin-bottom: 5px; 
+}
+
+button.viewButton {
+  font-size: 18px;
+  font-weight: bold; 
+  color: #07f37d; 
+  background-color: #01c563; 
+  padding: 12px 24px; 
+  border-radius: 25px;
+  border: 3px solid #03db6f; 
+  transition: all 0.3s ease; 
+  align-self: center; 
+  margin-top: 10px;
+}
+
+button.viewButton:hover {
+  background-color: #ffff; /* Button background colour on hover */
+  color: #01c563; /* Button text colour on hover */
+  border-color: #ffff; /* Border colour on hover */
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .search-and-filter {
+    flex-direction: column;
+  }
+
+  input[type="text"], select.category-filter {
+    width: calc(100% - 20px);
+    margin: 10px 0;
+  }
+
   .view-container {
-    grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr)); /* Adjust for single column layout */
+    grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr));
   }
 }
+
 
 /* NAVBAR UI */
 
