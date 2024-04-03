@@ -358,3 +358,90 @@ h2 {
 .hText {
   color: black;
 }
+
+/* VIEW PAGE*/
+
+
+/* Base styling */
+* {
+  box-sizing: border-box;
+}
+
+/* Styling for the search input and filter dropdown box */
+input[type="text"], select.category-filter {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #4dffa6; /*  border color */
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"] {
+  width: calc(50% - 20px); /* Adjusted width for side-by-side layout */
+  margin-right: 10px; /* Small space between the input and dropdowmn */
+}
+
+input[type="text"]:focus, select.category-filter:focus {
+  border-color: #4dffa6; /* focus color */
+  box-shadow: 0 0 9px #07f37d;
+}
+
+/* Adjustments for the search bar and filter dropdown container */
+.search-and-filter {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px; /* Space between search input and filter dropdown */
+  margin: 20px 0; /* Adjusted top margin for spacing */
+}
+
+/* Styling for the filter dropdown */
+select.category-filter {
+  width: calc(50% - 20px); /* Adjusted width for side-by-side layout */
+  margin-left: 10px;
+}
+
+/* Adjustments for the job sections container */
+.view-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr));
+  gap: 20px;
+  padding: 0 10px;
+}
+
+/* Styling for each job section box */
+section {
+  background-color: #4dffa6;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+section:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 34, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-and-filter {
+    flex-direction: column;
+  }
+
+  input[type="text"], select.category-filter {
+    width: calc(100% - 20px); /* Full width on smaller screens */
+    margin: 10px 0; /* Adjusted margin for vertical layout */
+  }
+
+  .view-container {
+    grid-template-columns: repeat(auto-fill, minmax(calc(100% - 40px), 1fr));
+  }
+}
