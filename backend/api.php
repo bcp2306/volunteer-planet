@@ -1,18 +1,6 @@
 <?php
 
-// Allow any domain to access
-header('Access-Control-Allow-Origin: *');
-
-// Allow specific HTTP methods
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-
-// Allow specific headers
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
-
-// Handle preflight requests
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    exit(0);
-}
+require_once 'backend/utilities/cors.php';
 
  /**
  * MAIN 
