@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function View() {
   const [jobs, setJobs] = useState([]);
@@ -29,7 +30,9 @@ function View() {
       <p>{job.description}</p>
       <h4>Category:</h4>
       <p>{job.category}</p>
-      <button className='viewButton'>Apply</button>
+      <button className='viewButton'>
+      <Link to="/apply">Apply</Link>
+        </button>
     </section>
   ));
 

@@ -24,7 +24,7 @@ function App() {
         <ul>
             <div className='li'>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/view">View Volunteering Opportunities</Link></li>
+            <li><Link to="/view">Volunteering Opportunities</Link></li>
             <li><Link to="/my-opportunities">My Opportunities</Link></li>
             <li> <a href="https://www.w3schools.com">View map</a></li>
             <li><Link to="/references">References</Link></li>
