@@ -1,6 +1,5 @@
 <?php
-
-require_once 'backend/utilities/cors.php';
+require_once 'utilities/cors.php';
 
  /**
  * MAIN 
@@ -35,7 +34,7 @@ try
             // handling of the POST request for adding new volunteer opportunities
         case '/addOpportunity':
         case '/addOpportunity/':
-            include 'AddNewOpportunity.php';
+            include 'src/AddNewOpportunity.php';
             return;
         default:
             throw new ClientError(404);

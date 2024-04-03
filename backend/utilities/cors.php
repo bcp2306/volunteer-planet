@@ -1,4 +1,5 @@
 <?php
+require_once '../config/config.php';
 /**
  * CORS
  * Handling of the CORS setup & preflight requests
@@ -7,9 +8,6 @@
  *
  * @author Kevin Osminski
  */
-
-require_once 'backend/config/config.php';
-
 header('Access-Control-Allow-Origin: ' . CORS_DOMAIN);
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
