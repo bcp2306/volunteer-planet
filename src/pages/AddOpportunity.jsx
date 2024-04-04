@@ -1,3 +1,13 @@
+ /**
+ * AddOpportunity
+ *
+ * This page features the Add Opportunity page, which enable the users to add new opportunities onto the website.
+ * 
+ * Due to CORS problems related to the POST requests, the process of adding new opportunities is a simulation...
+ * ...instead of actual addition of a volunteer opportunity into the database Jobs.
+ *
+ * @author Kevin Osminski
+ */
 import React, { useState } from 'react';
 
 const Add = () => {
@@ -21,6 +31,7 @@ const Add = () => {
     // For now, as i can't manage to set-up the connection to the DB because of unknown POST requests
     // the form simulates the process of adding a new opportunity instead.
     // Will work with Brad & Sean on implementing this.
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setTimeout(() => {

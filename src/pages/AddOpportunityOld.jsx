@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/** import React, { useState } from 'react';
 
 const Add = () => {
     const [formData, setFormData] = useState({
@@ -72,3 +72,4 @@ const Add = () => {
 };
 
 export default Add;
+*/
