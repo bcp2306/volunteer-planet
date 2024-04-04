@@ -53,8 +53,7 @@ const Add = () => {
 
     return (
         <div className='add-container'>
-            <h1 className='tColor'>Add Volunteer Opportunity</h1>
-            {}
+            <h1>Add Volunteer Opportunity</h1>
             {message.content && (
                 <div className={`message ${message.type}`}>
                     {message.content}
