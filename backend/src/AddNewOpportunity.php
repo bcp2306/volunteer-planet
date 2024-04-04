@@ -1,6 +1,5 @@
 <?php
-
-require_once 'backend/utilities/dependencies.php';
+require_once '../utilities/dependencies.php';
 
 class AddNewOpportunity
 {
