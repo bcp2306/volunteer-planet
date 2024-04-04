@@ -20,17 +20,14 @@ const MyOpportunities = () => {
     fetchOpportunities();
   }, []);
 
-  const handleRemove = async (id) => {
+    // For now, as i can't manage to set-up the connection to the DB because of unknown POST requests
+    // the form simulates the process of removing the new opportunity instead.
+    // Will work with Brad & Sean on implementing this.
+
+  const handleRemove = (id) => {
     if (window.confirm("Do you want to remove this opportunity?")) {
-      try {
-        const response = await fetch(`https://w20042922.nuwebspace.co.uk/team-project/backend/jobs/${id}`, { method: 'DELETE' });
-        if (!response.ok) throw new Error('Failed to remove');
-        setOpportunities(opportunities.filter(opportunity => opportunity.id !== id));
-        alert('Opportunity removed successfully.'); 
-      } catch (error) {
-        console.error("Failed to remove opportunity:", error);
-        alert('Failed to remove opportunity.');
-      }
+      setOpportunities(opportunities.filter(opportunity => opportunity.id !== id));
+      alert('Opportunity removed successfully.');
     }
   };
 
