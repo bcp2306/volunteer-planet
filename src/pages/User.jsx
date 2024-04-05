@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 
@@ -8,6 +8,40 @@ function User() {
     const handleTabClick = (index) => {
       setActiveTabIndex(index);
     };
+	
+	const [username, setUsername] = useState(null);
+	const [password, setPassword] = useState(null);
+	const [email, setEmail] = useState(null);
+	const [data, setData] = useState([]);
+	
+
+	const regSubmit = async () => {
+        try {
+            const data = await (await fetch(`https://w22039513.nuwebspace.co.uk/API/api/register?username=${username}&email=${email}&password=${password}`)).json()
+            setData(data)
+			if(String(data.response == "OK")){
+				window.location.href = "/";
+			}else{
+				console.log("no");
+			}
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+	const loginSubmit = async () => {
+        try {
+            const data = await (await fetch(`https://w22039513.nuwebspace.co.uk/API/api/login?username=${username}&password=${password}`)).json()
+            setData(data)
+			if(data.valid){
+				window.location.href = "/";
+			}else{
+				console.log("no");
+			}
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
 
     return (
         <div className='tab-form'>
@@ -23,24 +57,24 @@ function User() {
 
                   <div className="input-box">
                     <label>Username</label>
-                    <input type="text" placeholder='Enter Username' required /> 
+                    <input type="text" placeholder='Enter Username' name="Username" required value={username} onChange={e => setUsername(e.target.value)}/> 
                     <FaUser className='icon-user' />     
                   </div>
 
                   <div className="input-box">
                     <label>Email</label>
-                    <input type="email" placeholder='Enter Email' required />
+                    <input type="email" placeholder='Enter Email' name="Email" required value={email} onChange={e => setEmail(e.target.value)}/>
                     <IoIosMail className='icon-mail' /> 
                   </div>
 
                   <div className="input-box">
                     <label>Password</label>
-                    <input type="password" placeholder='Enter Password' required />
+                    <input type="password" placeholder='Enter Password' name="Password" required value={password} onChange={e => setPassword(e.target.value)}/>
                     <FaLock className='icon-lock' />  
                   </div>   
 
                   <div className="input-box">
-                    <button>Signup</button>
+                    <button onClick={regSubmit}>Signup</button>
                   </div>
                   </div>
                 )}               
@@ -50,25 +84,20 @@ function User() {
 
                   <div className="input-box">
                           <label>Username</label>
-                          <input type="text" placeholder='Enter Username' required />
+                          <input type="text" placeholder='Enter Username' name="Username" required value={username} onChange={e => setUsername(e.target.value)} />
                           <FaUser className='icon-user' />
                   </div>
 
                   <div className="input-box">
                           <label>Password</label>
-                          <input type="password" placeholder='Enter Password' required />
+                          <input type="password" placeholder='Enter Password' name="Password" required value={password} onChange={e => setPassword(e.target.value)}/>
                           <FaLock className='icon-lock' />  
                   </div>
 
-                  <div className="remember-forgot">
-                    <label><input type="checkbox" />Remember me</label>
-                    <a href="#">Forgot Password?</a>
-                  </div>
-
                   <div className="input-box">
-                          <button>Login</button>
-                </div>
-                </div>
+                          <button onClick={loginSubmit}>Login</button>
+                  </div>
+                  </div>              
                 )}
               </div>
             </div>
