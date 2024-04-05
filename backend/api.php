@@ -1,7 +1,4 @@
 <?php
-
-require_once 'backend/utilities/cors.php';
-
  /**
  * MAIN 
  *
@@ -32,11 +29,6 @@ try
         case '/jobs/' :
             $endpoint = new Jobs();
             break;
-            // handling of the POST request for adding new volunteer opportunities
-        case '/addOpportunity':
-        case '/addOpportunity/':
-            include 'AddNewOpportunity.php';
-            return;
         default:
             throw new ClientError(404);
     }

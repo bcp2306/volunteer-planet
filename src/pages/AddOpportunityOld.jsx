@@ -1,14 +1,4 @@
- /**
- * AddOpportunity
- *
- * This page features the Add Opportunity page, which enable the users to add new opportunities onto the website.
- * 
- * Due to CORS problems related to the POST requests, the process of adding new opportunities is a simulation...
- * ...instead of actual addition of a volunteer opportunity into the database Jobs.
- *
- * @author Kevin Osminski
- */
-import React, { useState } from 'react';
+/** import React, { useState } from 'react';
 
 const Add = () => {
     const [formData, setFormData] = useState({
@@ -28,33 +18,37 @@ const Add = () => {
         }));
     };
 
-    // For now, as i can't manage to set-up the connection to the DB because of unknown POST requests
-    // the form simulates the process of adding a new opportunity instead.
-    // Will work with Brad & Sean on implementing this.
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setTimeout(() => {
-            try {
-                const simulatedResponseOk = true;
+        const url = 'https://w20042922.nuwebspace.co.uk/team-project/backend/jobs';
 
-                if (!simulatedResponseOk) {
-                    throw new Error(`Simulated error: Unable to add volunteer opportunity.`);
-                }
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
 
-                setMessage({ type: 'success', content: 'Volunteer opportunity added successfully!' });
+            const responseData = await response.json();
 
-                setFormData({
-                    title: '',
-                    description: '',
-                    category: '',
-                    longitude: '',
-                    latitude: ''
-                });
-            } catch (error) {
-                setMessage({ type: 'error', content: `Error submitting form: ${error.message}` });
+            if (!response.ok) {
+                throw new Error(responseData.message || `HTTP error! status: ${response.status}`);
             }
-        }, 2000);
+
+            setMessage({ type: 'success', content: 'Volunteer opportunity added successfully!' });
+            
+            setFormData({
+                title: '',
+                description: '',
+                category: '',
+                longitude: '',
+                latitude: ''
+            });
+        } catch (error) {
+            setMessage({ type: 'error', content: `Error submitting form: ${error.message}` });
+        }
     };
 
     return (
@@ -78,3 +72,4 @@ const Add = () => {
 };
 
 export default Add;
+*/
