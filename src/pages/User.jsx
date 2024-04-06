@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
+import { useAuth } from '../AuthContext'; // authentication
 
 function User() {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -9,6 +10,7 @@ function User() {
       setActiveTabIndex(index);
     };
 	
+  const { login } = useAuth();
 	const [username, setUsername] = useState(null);
 	const [password, setPassword] = useState(null);
 	const [email, setEmail] = useState(null);
@@ -20,6 +22,7 @@ function User() {
             const data = await (await fetch(`https://w22039513.nuwebspace.co.uk/API/api/register?username=${username}&email=${email}&password=${password}`)).json()
             setData(data)
 			if(String(data.response == "OK")){
+        login({ username, isAdmin: false }); // payload
 				window.location.href = "/";
 			}else{
 				console.log("no");
@@ -34,6 +37,7 @@ function User() {
             const data = await (await fetch(`https://w22039513.nuwebspace.co.uk/API/api/login?username=${username}&password=${password}`)).json()
             setData(data)
 			if(data.valid){
+        login({ username, isAdmin: data.isAdmin }); // payload
 				window.location.href = "/";
 			}else{
 				console.log("no");
