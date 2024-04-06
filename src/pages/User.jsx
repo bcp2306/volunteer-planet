@@ -1,51 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
-import { useAuth } from '../AuthContext'; // authentication
+import { useAuth } from '../AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function User() {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
+    const navigate = useNavigate();
+    const { login } = useAuth();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [data, setData] = useState([]);
 
     const handleTabClick = (index) => {
-      setActiveTabIndex(index);
+        setActiveTabIndex(index);
+      };
+
+      const regSubmit = async () => {
+        try {
+            const response = await fetch(`https://w22039513.nuwebspace.co.uk/API/api/register?username=${username}&email=${email}&password=${password}`);
+            const data = await response.json();
+            setData(data);
+            if(String(data.response) === "OK"){
+                login({ username, isAdmin: false });
+                navigate('/');
+            } else {
+                console.log("Registration failed:", data.message);
+            }
+        } catch (err) {
+            console.log("Error during registration:", err.message);
+        }
     };
-	
-  const { login } = useAuth();
-	const [username, setUsername] = useState(null);
-	const [password, setPassword] = useState(null);
-	const [email, setEmail] = useState(null);
-	const [data, setData] = useState([]);
-	
 
-	const regSubmit = async () => {
+    const loginSubmit = async () => {
         try {
-            const data = await (await fetch(`https://w22039513.nuwebspace.co.uk/API/api/register?username=${username}&email=${email}&password=${password}`)).json()
-            setData(data)
-			if(String(data.response == "OK")){
-        login({ username, isAdmin: false }); // payload
-				window.location.href = "/";
-			}else{
-				console.log("no");
-			}
+            const response = await fetch(`https://w22039513.nuwebspace.co.uk/API/api/login?username=${username}&password=${password}`);
+            const data = await response.json();
+            setData(data);
+            if(data.valid) {
+                login({ username, isAdmin: data.isAdmin });
+                data.isAdmin ? navigate('/my-opportunities') : navigate('/');
+            } else {
+                console.log("Login failed:", data.message);
+            }
         } catch (err) {
-            console.log(err.message)
+            console.log("Error during login:", err.message);
         }
-    }
-
-	const loginSubmit = async () => {
-        try {
-            const data = await (await fetch(`https://w22039513.nuwebspace.co.uk/API/api/login?username=${username}&password=${password}`)).json()
-            setData(data)
-			if(data.valid){
-        login({ username, isAdmin: data.isAdmin }); // payload
-				window.location.href = "/";
-			}else{
-				console.log("no");
-			}
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
+    };
 
     return (
         <div className='tab-form'>

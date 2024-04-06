@@ -10,24 +10,33 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsedUser = JSON.parse(storedUser);
+      parsedUser.isAdmin = parsedUser.admin;
+      setUser(parsedUser);
     }
   }, []);
 
   const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+    const userDataWithAdminFlag = {
+      ...userData,
+      isAdmin: userData.admin,
+    };
+    setUser(userDataWithAdminFlag);
+    localStorage.setItem('user', JSON.stringify(userDataWithAdminFlag));
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
   };
+  
+  const isAuthenticated = !!user;
+  const isAdmin = !!user?.isAdmin;
 
   const value = {
     user,
-    isAuthenticated: !!user,
-    isAdmin: !!user && user.isAdmin,
+    isAuthenticated,
+    isAdmin,
     login,
     logout
   };
