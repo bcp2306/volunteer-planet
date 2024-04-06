@@ -1,34 +1,33 @@
 <?php 
 
-	// gets the connection file
-	include "Database.php"; //Add the connection file**
+include "Database.php";
 
-	public function __construct(){
-        $this->setDatabase("../db/users.sqlite");
+$db = new Database();
+$connection = $db->connect();
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $stmt = $connection->prepare("SELECT * FROM users WHERE username = :username");
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($password, $user['password'])){
+        $_SESSION['userID'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['isAdmin'] = $user['admin'];
+
+        header("Location: Home.jsx");
+        exit();
+    } else {
+
+        header("Location: Home.jsx");
+        exit();
     }
-	
-	// checks if the page request method was via the form post
-	if($_SERVER['REQUEST_METHOD'] == "POST"){
-		// gets the username and password being submitted from the form
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		
-		// queries the database using the username to find a match
-		$sql = "SELECT * FROM account WHERE username=:username"; 
-		$result = $this->getDatabase()->executeSQL($sql);
-		
-		// checks all the results to see if the password_verify can find a match using the password input and the password hash from the db
-		foreach($result as $row){
-			if(password_verify($password, $row['password'])){
-				// starts session if there is a match and saves the logged in users data in the session cache 
-				session_start();
-				$_SESSION['userID'] = $row['id'];
-				$_SESSION['username'] = $row['username'];
-				
-				// redirects you to admin page.
-				header("Location: Home.jsx");
-				exit();
-			}
-		}
-	}
+}
+
 ?>
+        

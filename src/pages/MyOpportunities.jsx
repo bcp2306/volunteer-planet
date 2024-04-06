@@ -13,25 +13,35 @@
  import '../MyOpportunities.css';
  import React, { useState, useEffect } from 'react';
  import { useNavigate } from 'react-router-dom';
+ import { useAuth } from '../AuthContext';
  
  const MyOpportunities = () => {
-   const [opportunities, setOpportunities] = useState([]);
-   const navigate = useNavigate();
+  const [opportunities, setOpportunities] = useState([]);
+  const navigate = useNavigate();
+  const { isAuthenticated, isAdmin } = useAuth();
  
-   useEffect(() => {
-     const fetchOpportunities = async () => {
-       try {
-         const response = await fetch('https://w20042922.nuwebspace.co.uk/team-project/backend/jobs');
-         if (!response.ok) throw new Error('Failed to fetch');
-         const data = await response.json();
-         setOpportunities(data);
-       } catch (error) {
-         console.error("Failed to fetch opportunities:", error);
-       }
-     };
- 
-     fetchOpportunities();
-   }, []);
+  useEffect(() => {
+    console.log("Authenticated:", isAuthenticated); // debugging added for isAuthenticated
+    console.log("Admin:", isAdmin); // debugging added for isAdmin
+
+    if (!isAuthenticated || !isAdmin) {
+      navigate('/user');
+      return;
+    }
+
+    const fetchOpportunities = async () => {
+      try {
+        const response = await fetch('https://w20042922.nuwebspace.co.uk/team-project/backend/jobs');
+        if (!response.ok) throw new Error('Failed to fetch');
+        const data = await response.json();
+        setOpportunities(data);
+      } catch (error) {
+        console.error("Failed to fetch opportunities:", error);
+      }
+    };
+
+    fetchOpportunities();
+  }, [isAuthenticated, isAdmin, navigate])
  
    const handleRemove = (id) => {
      if (window.confirm("Do you want to remove this opportunity?")) {
