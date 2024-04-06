@@ -27,7 +27,7 @@ function App() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/view">Volunteering Opportunities</Link></li>
             <li><Link to="/my-opportunities">My Opportunities</Link></li>
-            <li> <a href="https://www.w3schools.com">View map</a></li>
+            <li> <a href="https://w20042922.nuwebspace.co.uk/team-project/interactive-map/">View map</a></li>
             <li><Link to="/references">References</Link></li>
             <li><Link to="/profile">Profile</Link></li>
             </div>
