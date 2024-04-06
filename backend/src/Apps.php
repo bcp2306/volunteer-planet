@@ -3,22 +3,22 @@
 
  class  Apps extends Endpoint
  {
-     public function __construct()
-     {
-         switch(Request::method())
-         {
-             case 'GET':
-                 $this->getAllApps();
-                 break;
-             case 'POST':
-                 $this->addApp();
-                 break;
-             default:
-                 throw new ClientError(405, 'Method Not Allowed');
-         }
-         
-         parent::__construct($data);
-     }
+    public function __construct()
+    {
+        switch (Request::method()) {
+            case 'GET':
+                $this->getAllApps();
+                break;
+            case 'POST':
+                $this->addApp();
+                break;
+            default:
+                throw new ClientError(405, 'Method Not Allowed');
+        }
+        
+        parent::__construct(); 
+    }
+    
  
      private function getAllApps()
      {
