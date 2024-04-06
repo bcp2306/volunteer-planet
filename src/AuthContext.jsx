@@ -10,27 +10,30 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsedUser = JSON.parse(storedUser);
+      parsedUser.isAdmin = parsedUser.admin ?? false;
+      setUser(parsedUser);
     }
   }, []);
 
   const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+    const userDataWithAdminFlag = {
+      ...userData,
+      isAdmin: userData.admin ?? false,
+    };
+    setUser(userDataWithAdminFlag);
+    localStorage.setItem('user', JSON.stringify(userDataWithAdminFlag));
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
   };
+  
+  const isAuthenticated = !!user;
+  const isAdmin = !!user?.isAdmin;
 
-  const value = {
-    user,
-    isAuthenticated: !!user,
-    isAdmin: !!user && user.isAdmin,
-    login,
-    logout
-  };
+  const value = { user, isAuthenticated, isAdmin, login, logout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

@@ -20,7 +20,10 @@
   const navigate = useNavigate();
   const { isAuthenticated, isAdmin } = useAuth();
  
-   useEffect(() => {
+  useEffect(() => {
+    console.log("Authenticated:", isAuthenticated); // debugging added for isAuthenticated
+    console.log("Admin:", isAdmin); // debugging added for isAdmin
+
     if (!isAuthenticated || !isAdmin) {
       navigate('/user');
       return;
