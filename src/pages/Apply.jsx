@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../Apply.css'; 
 
 function Apply() {
-   
     const [application, setApplication] = useState({
         applicationType: 'individual',
         fullName: '',
@@ -15,21 +14,18 @@ function Apply() {
     const [jobs, setJobs] = useState([]);
     const [isSubmitted, setIsSubmitted] = useState(false); 
 
-    
     useEffect(() => {
-        fetch("https://w20042922.nuwebspace.co.uk/team-project/backend/jobs")
+        fetch("https://w20042922.nuwebspace.co.uk/team-project/backend/")
             .then(response => response.json())
             .then(json => setJobs(json))
             .catch(err => console.log(err));
     }, []);
 
-   
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setApplication({ ...application, [name]: value });
     };
 
-    
     const handleGroupMemberChange = (index, e) => {
         const { name, value } = e.target;
         const updatedGroupMembers = application.groupMembers.map((member, idx) => 
@@ -38,7 +34,6 @@ function Apply() {
         setApplication({ ...application, groupMembers: updatedGroupMembers });
     };
 
-    
     const addGroupMember = () => {
         setApplication({
             ...application,
@@ -46,12 +41,32 @@ function Apply() {
         });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(application); 
-        setIsSubmitted(true); 
+        // Constructing a query string with application data
+        const queryString = `fullName=${encodeURIComponent(application.fullName)}&email=${encodeURIComponent(application.email)}&dob=${encodeURIComponent(application.dob)}&coverLetter=${encodeURIComponent(application.coverLetter)}&jobTitle=${encodeURIComponent(application.jobTitle)}`;
+        
+        // You might need to adjust the URL path depending on where and how you handle these submissions on your server
+        const url = `https://w20042922.nuwebspace.co.uk/team-project/backend/applications?${queryString}`;
+    
+        try {
+            const response = await fetch(url, {
+                method: 'GET', // Using GET here since we're appending data in the query string
+            });
+            const data = await response.json();
+            
+            if (response.ok) {
+                console.log('Success:', data);
+                setIsSubmitted(true);
+            } else {
+                console.log("Submission failed:", data);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
+    
 
     return (
         <>
@@ -65,7 +80,6 @@ function Apply() {
                     </select>
                 </div>
 
-            
                 <div>
                     <label>Job Title:</label>
                     <select name="jobTitle" value={application.jobTitle} onChange={handleInputChange}>
@@ -76,7 +90,6 @@ function Apply() {
                     </select>
                 </div>
 
-               
                 {application.applicationType === 'group' && application.groupMembers.map((member, index) => (
                     <div key={index}>
                         <h3>Group Member {index + 1}</h3>
@@ -90,13 +103,12 @@ function Apply() {
                     <button type="button" onClick={addGroupMember}>Add Another Member</button>
                 )}
 
-                
                 <div>
                     <label>Full Name:</label>
                     <input type="text" name="fullName" value={application.fullName} onChange={handleInputChange} />
                 </div>
                 <div>
-                    <label>Email:</label>
+                    <label>Phone:</label>
                     <input type="email" name="email" value={application.email} onChange={handleInputChange} />
                 </div>
                 <div>

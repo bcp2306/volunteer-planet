@@ -11,6 +11,7 @@ import volunteerPlanet from './assets/volunteer-planet-green.png';
 import Footer from './component/Footer.jsx';
 import AddOpportunity from './pages/AddOpportunity';
 import EditOpportunity from './pages/EditOpportunity';
+import Profile from './pages/Profile';
 
 
 
@@ -28,6 +29,7 @@ function App() {
             <li><Link to="/my-opportunities">My Opportunities</Link></li>
             <li> <a href="https://www.w3schools.com">View map</a></li>
             <li><Link to="/references">References</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
             </div>
         </ul>
           <div >
@@ -46,6 +48,7 @@ function App() {
       <Route path="/user" element={<User />} />
       <Route path="/add-opportunity" element={<AddOpportunity />} />
       <Route path="/edit-opportunity/:id" element={<EditOpportunity />} />
+      <Route path="/profile" element={<Profile />} />
      </Routes>
      <Footer />
     </div>
