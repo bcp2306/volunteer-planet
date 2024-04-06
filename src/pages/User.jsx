@@ -39,8 +39,8 @@ function User() {
         const data = await response.json();
         setData(data);
             if(data.valid) {
-              login({ username, isAdmin: data.admin }); 
-              data.admin ? navigate('/my-opportunities') : navigate('/');
+              login({ username, admin: data.admin });
+              navigate(data.admin ? '/my-opportunities' : '/');
             } else {
               console.log("Login failed:", data.message);
             }

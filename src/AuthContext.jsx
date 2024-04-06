@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
-      parsedUser.isAdmin = parsedUser.admin;
+      parsedUser.isAdmin = parsedUser.admin ?? false;
       setUser(parsedUser);
     }
   }, []);
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   const login = (userData) => {
     const userDataWithAdminFlag = {
       ...userData,
-      isAdmin: userData.admin,
+      isAdmin: userData.admin ?? false,
     };
     setUser(userDataWithAdminFlag);
     localStorage.setItem('user', JSON.stringify(userDataWithAdminFlag));
@@ -33,13 +33,7 @@ export const AuthProvider = ({ children }) => {
   const isAuthenticated = !!user;
   const isAdmin = !!user?.isAdmin;
 
-  const value = {
-    user,
-    isAuthenticated,
-    isAdmin,
-    login,
-    logout
-  };
+  const value = { user, isAuthenticated, isAdmin, login, logout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
