@@ -34,20 +34,20 @@ function User() {
     };
 
     const loginSubmit = async () => {
-        try {
-            const response = await fetch(`https://w22039513.nuwebspace.co.uk/API/api/login?username=${username}&password=${password}`);
-            const data = await response.json();
-            setData(data);
+      try {
+        const response = await fetch(`https://w22039513.nuwebspace.co.uk/API/api/login?username=${username}&password=${password}`);
+        const data = await response.json();
+        setData(data);
             if(data.valid) {
-                login({ username, isAdmin: data.isAdmin });
-                data.isAdmin ? navigate('/my-opportunities') : navigate('/');
+              login({ username, isAdmin: data.admin }); 
+              data.admin ? navigate('/my-opportunities') : navigate('/');
             } else {
-                console.log("Login failed:", data.message);
+              console.log("Login failed:", data.message);
             }
-        } catch (err) {
+          } catch (err) {
             console.log("Error during login:", err.message);
-        }
-    };
+          }
+        };
 
     return (
         <div className='tab-form'>
