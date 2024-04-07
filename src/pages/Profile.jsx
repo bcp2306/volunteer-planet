@@ -16,11 +16,9 @@
  function Profile() {
      const navigate = useNavigate();
      const username = sessionStorage.getItem('username');
-     // State to store applications fetched from localStorage
      const [applications, setApplications] = useState([]);
  
      useEffect(() => {
-         // Redirect to login if not logged in
          if (!username) {
              navigate('/user');
          } else {
@@ -36,11 +34,11 @@
      const deleteApplication = (indexToDelete) => {
          const filteredApplications = applications.filter((_, index) => index !== indexToDelete);
          localStorage.setItem('applications', JSON.stringify(filteredApplications));
-         loadApplications(); // Reload applications from localStorage
+         loadApplications(); 
      };
  
      const addApplication = () => {
-         navigate('/apply'); // Adjust this path to your actual Apply component route
+         navigate('/apply');
      };
  
      return (
