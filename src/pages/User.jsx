@@ -23,6 +23,7 @@ function User() {
             const data = await response.json();
             setData(data);
             if(String(data.response) === "OK"){
+              sessionStorage.setItem('username', username);
                 login({ username, isAdmin: false });
                 navigate('/');
             } else {
@@ -39,6 +40,7 @@ function User() {
         const data = await response.json();
         setData(data);
             if(data.valid) {
+              sessionStorage.setItem('username', username);
               login({ username, admin: data.admin });
               navigate(data.admin ? '/my-opportunities' : '/');
             } else {

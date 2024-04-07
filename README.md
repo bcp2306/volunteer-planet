@@ -6,6 +6,10 @@ Link: https://w20042922.nuwebspace.co.uk/team-project/volunteer-planet/
 
 Link: https://w20042922.nuwebspace.co.uk/team-project/backend/jobs
 
+--- GitHub Repo ---
+
+Link: https://github.com/bcp2306/volunteer-planet
+
 PLEASE NOTE: The interactive map was created separately. The code for that subsystem 
                 can be found in 'map-source' folder. Also the 'node_modules' folder 
                 has not been submitted due to its size. 
