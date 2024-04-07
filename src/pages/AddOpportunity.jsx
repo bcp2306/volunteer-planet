@@ -111,7 +111,7 @@ const Add = () => {
                     required 
                     value={formData.latitude} 
                 />
-                <button type="submit" class="add-opportunity-btn">Add Opportunity</button>
+                <button type="submit" className="add-opportunity-button">Add Opportunity</button>
             </form>
         </div>
     );

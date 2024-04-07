@@ -22,13 +22,17 @@ export const AuthProvider = ({ children }) => {
   // Checks for a user in local storage.
   // If a user is found, it updates the state to reflect the user's authenticated status.
   useEffect(() => {
+
     // Retrieve user data from local storage.
     const storedUser = localStorage.getItem('user'); 
     if (storedUser) {
+
       // Parse the user data from string to object.
       const parsedUser = JSON.parse(storedUser); 
+
       // Ensure isAdmin attribute exists.
       parsedUser.isAdmin = parsedUser.admin ?? false; 
+
       // Update state with the authenticated user.
       setUser(parsedUser); 
     }
@@ -40,23 +44,28 @@ export const AuthProvider = ({ children }) => {
       ...userData,
       isAdmin: userData.admin ?? false,
     };
+
     // Update user state with new data.
     setUser(userDataWithAdminFlag); 
+
     // Store user data in local storage.
     localStorage.setItem('user', JSON.stringify(userDataWithAdminFlag)); 
   };
 
   // Function to handle user logout. Clears user state and removes user data from local storage.
   const logout = () => {
+
     // Reset user state to null, indicating no user is logged in.
     setUser(null); 
+
     // Remove user data from local storage to complete logout.
     localStorage.removeItem('user'); 
   };
   
   // States for easy access to common authentication checks.
-  // Boolean value that indicates if the user is authenticated
+  // Boolean value that indicates if the user is authenticated.
   const isAuthenticated = !!user; 
+  
   // Boolean value that indicates if the authenticated user is an admin.
   const isAdmin = !!user?.isAdmin; 
 
