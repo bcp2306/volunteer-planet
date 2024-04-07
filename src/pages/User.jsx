@@ -20,19 +20,26 @@ function User() {
       const regSubmit = async () => {
         try {
             const response = await fetch(`https://w22039513.nuwebspace.co.uk/API/api/register?username=${username}&email=${email}&password=${password}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             const data = await response.json();
-            setData(data);
-            if(String(data.response) === "OK"){
+            console.log(data);
+            if (String(data.Response) === "OK") {
               sessionStorage.setItem('username', username);
-                login({ username, isAdmin: false });
-                navigate('/');
+              login({ username, isAdmin: false });
+              navigate('/');
+            } else if (String(data.Response) === "DUPE") {
+              console.log("Registration failed: Username or email already exists.");
             } else {
-                console.log("Registration failed:", data.message);
+              console.log("Registration failed:", data.Message || 'Unknown error');
             }
         } catch (err) {
             console.log("Error during registration:", err.message);
         }
-    };
+      };
+      
+
 
     const loginSubmit = async () => {
       try {
