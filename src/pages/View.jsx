@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function View() {
+  const navigate = useNavigate(); 
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(""); // New state for selected category
@@ -24,15 +25,22 @@ function View() {
   // list of categories 
   const uniqueCategories = [...new Set(jobs.map(job => job.category))];
 
+  const handleApply = () => {
+    const username = sessionStorage.getItem('username');
+    if (!username) {
+      navigate('/user'); // Redirects to login page if user isn't logged in :)
+    } else {
+      navigate('/apply'); // Redirects to apply page if user is logged in
+    }
+  };
+
   const jobsJSX = jobs.filter(searchJobs).map((job, i) => (
     <section key={i}>
       <h2>{job.title}</h2>
       <p>{job.description}</p>
       <h4>Category:</h4>
       <p>{job.category}</p>
-      <button className='viewButton'>
-      <Link to="/apply" className='hColor'>Apply</Link>
-        </button>
+      <button onClick={handleApply} className='viewButton'>Apply</button>
     </section>
   ));
 
