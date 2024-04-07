@@ -26,6 +26,11 @@ function References() {
                     <a href="https://www.pexels.com/photo/hands-holding-green-plants-5029853/"> https://www.pexels.com/photo/hands-holding-green-plants-5029853/</a>
                     (Accessed: 1/04/2024)
                 </li>
+                <li>
+                    Starline (2024) Line style colorful volunteers group hands up with love heart vector. Available at: 
+                    https://www.freepik.com/free-vector/line-style-colorful-volunteers-group-hands-up-with-love-heart-vector_90459243.htm
+                    (Accessed: 07/04/2024)
+                </li>
             </ul>
         </div>
     )
