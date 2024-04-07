@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import volunteerPlanet from './assets/volunteer-planet-green.png';
 import Footer from './component/Footer.jsx';
 import AddOpportunity from './pages/AddOpportunity';
-import EditOpportunity from './pages/EditOpportunity';
 import Profile from './pages/Profile';
 
 
@@ -47,7 +46,6 @@ function App() {
       <Route path="/apply" element={<Apply />}/>
       <Route path="/user" element={<User />} />
       <Route path="/add-opportunity" element={<AddOpportunity />} />
-      <Route path="/edit-opportunity/:id" element={<EditOpportunity />} />
       <Route path="/profile" element={<Profile />} />
      </Routes>
      <Footer />
