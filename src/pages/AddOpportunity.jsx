@@ -73,8 +73,8 @@ const Add = () => {
                 // Display error message if unsuccessful.
                 setMessage({ type: 'error', content: `Error submitting form: ${error.message}` });
             }
-            // Delay of 1.5-second for simulation.
-        }, 1500);
+            // Delay of 2-second for simulation.
+        }, 2000);
     };
 
     // Renders the final form to add new volunteer opportunities.
