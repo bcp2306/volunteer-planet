@@ -10,12 +10,12 @@ public function __construct() {
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $data = json_decode(file_get_contents('php://input'), true);
 
-    // Including 'Phone' in the data extraction from the request
+    
     $fullName = $data['fullName'];
     $dob = $data['dob'];
     $coverLetter = $data['coverLetter'];
     $jobTitle = $data['jobTitle'];
-    $phone = $data['phone']; // Assuming 'phone' is the correct key in the JSON payload
+    $phone = $data['phone']; 
 
     // SQL statement specifies the 'Applications' table for inserting the data
     $sql = "INSERT INTO Applications (fullName, dob, coverLetter, jobTitle, phone) VALUES (:fullName, :dob, :coverLetter, :jobTitle, :phone)";
