@@ -48,7 +48,7 @@
              <div className="profile-picture">
                  <img src={Profilepic} alt="Profile" />
              </div>
-             <button onClick={addApplication} className="add-application-btn">Add Application</button>
+             <button onClick={addApplication} className="add-application-btn">Apply for more!</button>
              <h3>Applications Submitted:</h3>
              {applications.length > 0 ? (
                  applications.map((app, index) => (
