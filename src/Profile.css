@@ -1,36 +1,38 @@
-/* Profile.css */
-
 .profile-container {
-    padding: 20px;
-    background-color: #f0f0f0; /* Grey background color */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    margin-bottom: 20px; /* Add space at the bottom */
-  }
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   
-  .profile-picture {
-    width: 200px; /* Adjust width as needed */
-    height: 200px; /* Adjust height as needed */
-    border-radius: 50%; /* Make it round */
-    margin-right: 20px; /* Add space between the picture and details */
-    overflow: hidden; /* Ensure the image doesn't overflow */
-  }
-  
-  .profile-picture img {
-    width: 100%; /* Ensure the image takes up the entire space of the profile picture */
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the entire area */
-  }
-  
-  .profile-details {
-    flex: 1; /* Take up remaining space */
-  }
-  
-  .profile-details h2 {
-    margin-bottom: 10px; /* Add space below the name */
-  }
-  
-  .profile-details p {
-    margin-bottom: 5px; /* Add space below each detail */
-  }
-  
+  margin-bottom: 20px; /* Add space at the bottom */
+  margin-top: 30px; /* Add space at the top */
+}
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px; /* Add some space between the picture and the details below */
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details {
+  text-align: center; /* Center the text for smaller elements inside */
+}
+
+.profile-details h2 {
+  margin-bottom: 10px;
+}
+
+.profile-details p, .profile-details h3, .profile-details h4 {
+  margin-bottom: 5px;
+}
