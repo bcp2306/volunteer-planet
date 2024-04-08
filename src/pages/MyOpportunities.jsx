@@ -73,21 +73,23 @@
    // Renders the list of opportunities with remove option.
    return (
     <div className="opportunities-container">
-      <h1 className="header-title">My Opportunities</h1>
+      <h1 className="header-title">Add New Opportunity</h1>
       <button onClick={() => navigate('/add-opportunity')} className="add-opportunity-btn">
         Add New Opportunity
       </button>
-      {opportunities.map(opportunity => (
-        <li key={opportunity.id} className="opportunity-item">
-          <h2 className="opportunity-title">{opportunity.title}</h2>
-          <p className="opportunity-description">{opportunity.description}</p>
-          <div className="button-group">
-            <button className="remove-btn" onClick={() => handleRemove(opportunity.id)}>Remove</button>
-          </div>
-        </li>
-      ))}
+      <h1 className="opportunities-title">My Opportunities</h1>
+      <ul>
+        {opportunities.map(opportunity => (
+          <li key={opportunity.id} className="opportunity-item">
+            <h2 className="opportunity-title">{opportunity.title}</h2>
+            <p className="opportunity-description">{opportunity.description}</p>
+            <div className="button-group">
+             <button className="remove-btn" onClick={() => handleRemove(opportunity.id)}>Remove</button>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
- 
  export default MyOpportunities;
