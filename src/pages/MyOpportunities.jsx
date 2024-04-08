@@ -5,25 +5,29 @@
  * It enables the users with admin permission '1' (from users database) to remove posted volunteer opportunities (located in the jobs database).
  * Both authentication and admin status are verified before displaying any content.
  * 
- * Due to CORS problems related to the POST requests, the process of removing new opportunities is a simulation...
- * ...instead of actually removing the volunteer opportunity from the database Jobs.
+ * Due to CORS problems related to the POST requests, the process of removing new opportunities is a simulation
+ * [...] instead of actually removing the volunteer opportunity from the database Jobs.
  *
  * @author Kevin Osminski
  */
- import '../MyOpportunities.css';
+
+ // All the necessary libraries, hooks alongside navigation + authentication context.
  import React, { useState, useEffect } from 'react';
  import { useNavigate } from 'react-router-dom';
  import { useAuth } from '../AuthContext';
- 
+
+ // Stylesheet import.
+ import '../MyOpportunities.css';
+
  const MyOpportunities = () => {
 
-  // State used to store fetched opportunities.
+  // State used to hold opportunities that were fetched from the backend.
   const [opportunities, setOpportunities] = useState([]);
   
   // Navigation between routes.
   const navigate = useNavigate();
 
-  //// Custom hook to access authentication status and admin flag.
+  // Hook to access authentication status and admin flag.
   const { isAuthenticated, isAdmin } = useAuth();
  
   useEffect(() => {
@@ -38,7 +42,7 @@
       return;
     }
 
-    // Fetching opportunities from the backend.
+    // Fetching opportunities from the backend and updating the state.
     const fetchOpportunities = async () => {
       try {
         const response = await fetch('https://w20042922.nuwebspace.co.uk/team-project/backend/jobs');
@@ -50,17 +54,17 @@
       }
     };
     
-    // Execution of the fetch function.
+    // Fetch function.
     fetchOpportunities();
 
-  // Ensure that the effect runs only when authentication status or role changes.
+  // Ensures that the effect runs only when authentication status or role changes.
   }, [isAuthenticated, isAdmin, navigate])
  
-  // Handler used for removing opportunities.
+  // Handler used for removing opportunities - in this scenario, simulating it.
    const handleRemove = (id) => {
      if (window.confirm("Do you want to remove this opportunity?")) {
 
-      // Filter out the removed opportunity from the local state.
+      // Filters out the removed opportunity from the local state.
        setOpportunities(opportunities.filter(opportunity => opportunity.id !== id));
        alert('Opportunity removed successfully.');
      }
@@ -68,25 +72,22 @@
  
    // Renders the list of opportunities with remove option.
    return (
-     <div className="opportunities-container">
-       <h1 className="header-title">Add New Opportunity</h1>
-       <button onClick={() => navigate('/add-opportunity')} className="add-opportunity-btn">
-         Add New Opportunity
-       </button>
-       <h1 className="opportunities-title">My Opportunities</h1>
-       <ul>
-         {opportunities.map(opportunity => (
-           <li key={opportunity.id} className="opportunity-item">
-             <h2 className="opportunity-title">{opportunity.title}</h2>
-             <p className="opportunity-description">{opportunity.description}</p>
-             <div className="button-group">
-              <button className="remove-btn" onClick={() => handleRemove(opportunity.id)}>Remove</button>
-             </div>
-           </li>
-         ))}
-       </ul>
-     </div>
-   );
- };
+    <div className="opportunities-container">
+      <h1 className="header-title">My Opportunities</h1>
+      <button onClick={() => navigate('/add-opportunity')} className="add-opportunity-btn">
+        Add New Opportunity
+      </button>
+      {opportunities.map(opportunity => (
+        <li key={opportunity.id} className="opportunity-item">
+          <h2 className="opportunity-title">{opportunity.title}</h2>
+          <p className="opportunity-description">{opportunity.description}</p>
+          <div className="button-group">
+            <button className="remove-btn" onClick={() => handleRemove(opportunity.id)}>Remove</button>
+          </div>
+        </li>
+      ))}
+    </div>
+  );
+};
  
  export default MyOpportunities;

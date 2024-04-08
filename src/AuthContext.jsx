@@ -1,48 +1,52 @@
 /**
  * AuthContext
  * 
- * This component is responsible for authentication management. 
+ * This page is responsible for authentication management. 
  * It creates and exports a context (AuthContext) and a hook (useAuth) for accessing authentication-related data and functions throughout the website. 
- * 
+ * This include the logging in/out as well as checking the user/admin status.
  * 
  * @author Kevin Osminski
  */
+
+// Imports all the necessary libraries and hooks.
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Creation of a context for authentication. This will be used to provide the authentication state throughout the application.
+// Context for authentication.
 const AuthContext = createContext();
 
+// Hook that allows anybody who calls useAuth to have access to auth data and functions.
 export const useAuth = () => useContext(AuthContext);
 
+// Provides the authentication context to child components and initialise user state, handles login/out functions as well as checks for the user status.
 export const AuthProvider = ({ children }) => {
 
-  // State to keep track of the current user. Null when no user is logged in.
+  // Keeps track of the user. If null = nobody's logged in.
   const [user, setUser] = useState(null);
 
-  // Checks for a user in local storage.
-  // If a user is found, it updates the state to reflect the user's authenticated status.
-  useEffect(() => {
+/**
+ * Hook to check for an user in local stoarge.
+ * If found, it updates the user state to reflect the authenticated status. 
+ */ 
 
-    // Retrieve user data from local storage.
+  useEffect(() => {
     const storedUser = localStorage.getItem('user'); 
     if (storedUser) {
-
-      // Parse the user data from string to object.
       const parsedUser = JSON.parse(storedUser); 
-
-      // Ensure isAdmin attribute exists.
       parsedUser.isAdmin = parsedUser.admin ?? false; 
-
-      // Update state with the authenticated user.
       setUser(parsedUser); 
     }
   }, []);
 
-  // Function to handle user login. It accepts userData, assigns admin rights, and updates user state and local storage.
+  // Function that handles the user login. It accepts userData, assigns admin rights, and updates user state and local storage.
   const login = (userData) => {
     const userDataWithAdminFlag = {
       ...userData,
       isAdmin: userData.admin ?? false,
+    };
+
+    const logout = () => {
+      setUser(null);
+      localStorage.removeItem('user');
     };
 
     // Update user state with new data.
@@ -52,27 +56,20 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('user', JSON.stringify(userDataWithAdminFlag)); 
   };
 
-  // Function to handle user logout. Clears user state and removes user data from local storage.
+  // Function that logs out the current user. Clears user state & removes the data from local stoareeg.
   const logout = () => {
-
-    // Reset user state to null, indicating no user is logged in.
-    setUser(null); 
-
-    // Remove user data from local storage to complete logout.
-    localStorage.removeItem('user'); 
+    setUser(null);
+    localStorage.removeItem('user');
   };
-  
-  // States for easy access to common authentication checks.
-  // Boolean value that indicates if the user is authenticated.
-  const isAuthenticated = !!user; 
-  
-  // Boolean value that indicates if the authenticated user is an admin.
-  const isAdmin = !!user?.isAdmin; 
 
-  // The context value, including the user state, authentication checks, and auth functions, to be provided to children.
+  // Boolean flags that quickly access the user's authentication and admin status.
+  const isAuthenticated = !!user;
+  const isAdmin = !!user?.isAdmin;
+
+  // Preparing the context value with user data, authentication status, and auth functions.
   const value = { user, isAuthenticated, isAdmin, login, logout };
 
-  // Return statement to provide the authentication context to child components.
+  // Wrapping children components with AuthContext provider to share the state and functions.
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 

@@ -3,20 +3,25 @@
  *
  * This code features the Add Opportunity page, which enables the users to add new opportunities onto the website.
  * 
- * Due to CORS problems related to the POST requests, the process of adding new opportunities is a simulation...
- * ...instead of actual addition of a volunteer opportunity into the database Jobs.
+ * Due to CORS problems related to the POST requests, the process of adding new opportunities is a simulation 
+ * [...] instead of actual addition of a volunteer opportunity into the database Jobs.
  *
  * @author Kevin Osminski
  */
 
-import '../AddOpportunity.css';
+// All the necessary libraries, hooks and routing functionality.
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Stylesheet import.
+import '../AddOpportunity.css';
+
 const Add = () => {
+    
+    // Navigation between the routes.
     const navigate = useNavigate();
 
-    // State to manage the form data.
+    // State used for both holding and managing the input values from the form.
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -24,7 +29,8 @@ const Add = () => {
         longitude: '',
         latitude: ''
     });
-    // Handler for form input changes that updates the formData state.
+
+    // Handling of any changes in relation to the form input & updates the formData with the new value.
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -33,23 +39,27 @@ const Add = () => {
         }));
     };
 
-    // For now, as i can't manage to set-up the connection to the DB because of problems with POST requests,
-    // the form simulates the process of adding a new opportunity instead. 
-    // File 'AddOpportunityPOST.jsx' contains my previous code.
+    /** 
+     * Handles the event of submitting the form.
+     * At the moment, it only simulates the process of adding a new opportunity due to CORS issues with actual POST requests.
+     * Ideally, this would involve sending a POST request to a backend API to add the opportunity to a database.
+     * I've tried to do that within the 'AddOpportunityPOST.jsx' file available within the same folder.
+     */
 
-    // Handler for form submission.
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+
+            // Simulation of successful POST request.
             const simulatedResponseOk = true;
             if (!simulatedResponseOk) {
-                throw new Error('Simulated error: Unable to add volunteer opportunity.');
+                throw new Error('Unable to add volunteer opportunity.');
             }
 
             // Displays success message via alert.
             window.alert('Volunteer opportunity added successfully!');
 
-            // Reset form data after successful submission.
+            // Resets form data after successful submission.
             setFormData({
                 title: '',
                 description: '',
@@ -58,7 +68,7 @@ const Add = () => {
                 latitude: ''
             });
             
-            // Navigates to the 'My Opportunities' page upon success.
+            // Navigates to the 'My Opportunities' page when successful.
             navigate('/my-opportunities');
         } catch (error) {
 
