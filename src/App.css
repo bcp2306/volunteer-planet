@@ -341,6 +341,101 @@ h2 {
   position:relative;
 }
 
+/*Login - Password input-box attempt - didn't work
+
+.input-box-check {
+  display:flex;
+  flex-direction:column;
+  position: relative;
+}
+
+.input-box-check .input-wrapper {
+ margin-left:120px;
+}
+
+.input-box-check label {
+  position:absolute;
+  left:0;
+  margin-top:10px;
+}
+
+.input-wrapper {
+  flex:3;
+  position:relative;
+}
+
+.lock-icons {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  right:10px;
+}
+
+.lock-icons .icon-lock {
+  margin-left:-15px;
+  color:white;
+}
+
+.input-box-check.error .lock-icons .icon-lock {
+  color:#e74c3c;
+}
+
+.input-box-check.success .lock-icons .icon-lock {
+  color:#4dffa6; 
+}
+
+.input-box-check small {
+  margin-top: 5px; 
+  display: block; 
+  text-align: right;
+}
+
+.tab-form .tab-body > div .input-box-check input {
+  width:100%;
+  margin-top:5px;
+  margin-bottom:5px;
+  font-size:15px;
+  padding:10px;
+  border:1px solid black;
+  border-radius:15px;
+}
+
+.tab-form .tab-body > div .input-box-check.success input{
+  border-color:#4dffa6;
+}
+
+.tab-form .tab-body > div .input-box-check.error input{
+  border-color:#e74c3c;
+}
+
+.input-box-check small {
+  color:#e74c3c;
+  margin-bottom:5px;
+  margin-top:5px;
+  left:70px;
+  position:absolute;
+
+  visibility:hidden;
+}
+
+.input-box-check.error small {
+  visibility:visible;
+}
+
+.input-box-check.error small {
+  color:#e74c3c;
+  display:block;
+  margin:5px 0 0;
+  text-align:left;
+}
+
+.tab-body .input-box-check i {
+  display:inline-block;
+  position:absolute;
+
+}
+*/
+
 .input-box .icon-user {
   position: absolute;
   right: 10px; 
@@ -435,7 +530,12 @@ h2 {
   border-radius: 25px;
 }
 
-.hImg {
+.image-container {
+  display:flex;
+}
+
+.hImg,
+.hImg2 {
   width: 300px;
   height: auto;
   margin-left: 1em;

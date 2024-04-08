@@ -1,3 +1,13 @@
+ /**
+ * User.jsx Page
+ * 
+ * I was unable display user input error to the user and only to the console. Part of the attempted code is commented out the rest I removed.
+ * The CSS for this is also commented out in the app.acc file.
+ *
+ * @author Reece Pearson
+ */
+
+
 import React, { useState } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
@@ -109,6 +119,20 @@ function User() {
                           <FaLock className='icon-lock' />  
                   </div>
 
+                 {/* I attempted to add icons that would change colour depending on success or error of the user input
+
+                 <div className="input-box-check error">
+                    <label>Password</label>
+                    <div className="input-wrapper">
+                    <input type="password" placeholder='*********' name="Password" id="password" autocomplete="off" required value={password} onChange={e => setPassword(e.target.value)}/>  
+                    <div className="lock-icons">              
+                      <FaLock className='icon-lock' /> 
+                      <FaLock className='icon-lock' /> 
+                    </div> 
+                  </div>                
+                <small id="password error">Error</small>           
+                </div>*/}
+
                   <div className="input-box">
                           <button onClick={loginSubmit}>Login</button>
                   </div>
@@ -116,6 +140,20 @@ function User() {
                 )}
               </div>
             </div>
+            /* Code for validation - doesn't work spent days trying to get it working and couldn't, some of it I deleted
+
+            form.addEventListener("submit", (e)=>{
+              e.preventDefault();
+
+              let regex=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
+              if(email.value.trim()===""){
+                email.parentElement.className='input-box error';
+                emailError.innterHTML="Username is required"
+              }else if(regex.test(email.value.trim())){
+                email.parentElement.className="input-box success";
+              }
+              */
   );
 }
 
